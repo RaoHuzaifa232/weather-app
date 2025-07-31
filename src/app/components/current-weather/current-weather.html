@@ -1,0 +1,66 @@
+<div
+  class="p-8 text-white border border-white/20 rounded-lg shadow-lg"
+  [ngClass]="getWeatherGradient(data.current.condition.text)"
+>
+  <div class="flex flex-col space-y-6">
+    <!-- Location and Date -->
+    <div class="space-y-2">
+      <div class="flex items-center space-x-2">
+        <svg
+          class="h-5 w-5 text-white"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 2C8.13 2 5 5.13 5 9c0 4.8 7 13 7 13s7-8.2 7-13c0-3.87-3.13-7-7-7z"
+          />
+        </svg>
+        <h1 class="text-xl font-semibold">
+          {{ data.location.name }}, {{ data.location.region }}
+        </h1>
+      </div>
+      <div class="flex items-center space-x-2 text-white/80">
+        <svg
+          class="h-4 w-4 text-white"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M8 7V3M16 7V3M3 11h18M5 19h14a2 2 0 002-2V7H3v10a2 2 0 002 2z"
+          />
+        </svg>
+        <p class="text-sm">{{ formatTime(data.location.localtime) }}</p>
+      </div>
+    </div>
+
+    <!-- Weather Info -->
+    <div class="flex items-center justify-between">
+      <div class="space-y-2">
+        <div class="flex items-baseline space-x-2">
+          <span class="text-6xl font-bold">
+            {{ data.current.temp_c | number : "1.0-0" }}
+          </span>
+          <span class="text-2xl font-medium">°C</span>
+        </div>
+        <p class="text-white/80">
+          Feels like {{ data.current.feelslike_c | number : "1.0-0" }}°C
+        </p>
+      </div>
+
+      <div class="text-center space-y-3">
+        <img
+          [src]="'https:' + data.current.condition.icon"
+          [alt]="data.current.condition.text"
+          class="w-20 h-20 mx-auto drop-shadow-lg"
+        />
+        <p class="text-lg font-medium capitalize">
+          {{ data.current.condition.text }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

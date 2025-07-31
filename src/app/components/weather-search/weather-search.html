@@ -1,0 +1,40 @@
+<div
+  class="p-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg shadow"
+>
+  <div class="space-y-4">
+    <div class="flex items-center space-x-2">
+      <svg
+        class="h-5 w-5 text-blue-600"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C8.13 2 5 5.13 5 9c0 4.8 7 13 7 13s7-8.2 7-13c0-3.87-3.13-7-7-7z"
+        />
+      </svg>
+      <h2 class="text-lg font-semibold text-white">Weather Search</h2>
+    </div>
+
+    <form (submit)="handleSubmit($event)" class="flex space-x-2">
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        name="search"
+        placeholder="Search for a city... (e.g., Paris, Tokyo, New York)"
+        class="flex-1 w-full px-4 py-2 rounded-md border border-gray-300 bg-white/60 text-black focus:outline-none focus:ring-2 focus:ring-blue-600"
+      />
+      <button
+        type="submit"
+        class="h-10 w-10 flex items-center justify-center rounded-md bg-blue-600 hover:bg-blue-700 text-white"
+      >
+        🔍
+      </button>
+    </form>
+
+    <p class="text-sm text-gray-300">
+      Currently showing weather for:
+      <span class="font-medium text-white">{{ currentLocation }}</span>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div
+  class="p-4 bg-[#FCFEFF] border border-white/20 rounded-lg shadow-md text-white"
+>
+  <div class="flex items-center justify-between text-gray-900">
+    <div class="text-right text-gray-900">
+      <p class="text-sm text-[#738399]">{{ title }}</p>
+      <p class="text-xl font-semibold text-[#1D2530]">
+        {{ value }}
+        @if (unit) {
+        <span>{{ unit }}</span>
+        }
+      </p>
+    </div>
+    <lucide-icon [name]="icon" class="text-[#69AEF2] w-6 h-6" />
+  </div>
+</div>
