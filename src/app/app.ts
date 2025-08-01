@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CurrentWeather } from './components/current-weather/current-weather';
 import { WeatherDetails } from './components/weather-details/weather-details';
 import { WeatherSearch } from './components/weather-search/weather-search';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ import { WeatherSearch } from './components/weather-search/weather-search';
 })
 export class App {
   protected title = 'weather-app';
+  private _http = inject(HttpClient);
   currentLocation: string = 'London, City of London, Greater London';
 
   weatherData: any = {
@@ -114,9 +116,18 @@ export class App {
     const cityKey = location.toLowerCase();
     const cityData = this.sampleCityData[cityKey];
 
-    if (cityData) {
-      this.weatherData = cityData;
-      this.currentLocation = `${cityData.location.name}, ${cityData.location.region}`;
+    if (cityKey) {
+      this._http
+        .get(
+          `http://api.weatherapi.com/v1/current.json?key=048c1354e370428f97755024253107&q=${cityKey}&aqi=no`
+        )
+        .subscribe({
+          next: (res: any) => {
+            console.log('Res', res);
+            this.weatherData = res;
+            this.currentLocation = `${res.location.name}, ${res.location.region}`;
+          },
+        });
       // this.toastService.success(
       //   `Now showing weather for ${cityData.location.name}`,
       //   'Location Updated'

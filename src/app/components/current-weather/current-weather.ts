@@ -25,13 +25,13 @@ export class CurrentWeather {
   getWeatherGradient(condition: string): string {
     const conditionLower = condition.toLowerCase();
     if (conditionLower.includes('rain') || conditionLower.includes('drizzle')) {
-      return 'bg-gradient-to-r from-blue-500 to-blue-700';
+      return 'bg-gradient-to-r from-[#7E9EC9] to-[#5A8FC6]';
     }
     if (conditionLower.includes('cloud')) {
       return 'bg-gradient-to-r from-gray-500 to-gray-700';
     }
     if (conditionLower.includes('sun') || conditionLower.includes('clear')) {
-      return 'bg-gradient-to-r from-yellow-400 to-yellow-600';
+      return 'bg-gradient-to-r from-[#F2B35A] to-[#F6D06A]';
     }
     return 'bg-gradient-to-r from-sky-400 to-sky-600';
   }
