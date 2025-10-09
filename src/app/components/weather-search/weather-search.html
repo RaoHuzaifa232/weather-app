@@ -1,0 +1,32 @@
+<div
+  class="mt-[32px] p-6 bg-[#FCFEFF] backdrop-blur-sm border border-white/20 rounded-lg shadow"
+>
+  <div class="space-y-4">
+    <div class="flex items-center space-x-2">
+      <lucide-icon [name]="MapPin" class="text-[#2B8CEE] h-5 w-5" />
+
+      <h2 class="text-lg font-semibold text-[#2B333D]">Weather Search</h2>
+    </div>
+
+    <form (submit)="handleSubmit($event)" class="flex space-x-2">
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        name="search"
+        placeholder="Search for a city... (e.g., Paris, Tokyo, New York)"
+        class="flex-1 w-full px-4 py-2 rounded-md border border-gray-300 bg-white/60 text-black focus:outline-none focus:ring-2 focus:ring-[#2B8CEE]"
+      />
+      <button
+        type="submit"
+        class="h-10 w-10 flex items-center justify-center rounded-md bg-[#2C8DEE] hover:bg-[#3F97EF] text-white"
+      >
+        <lucide-icon [name]="Search" class="text-[#FFFFFF] h-4 w-4" />
+      </button>
+    </form>
+
+    <p class="text-sm text-gray-300">
+      Currently showing weather for:
+      <span class="font-medium text-[#1D2530]">{{ currentLocation }}</span>
+    </p>
+  </div>
+</div>
